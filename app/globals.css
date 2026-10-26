@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Trebuchet MS", Arial, sans-serif;
+    --font-body: Arial, "Helvetica Neue", sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --background: 196 38% 6%;
+    --foreground: 170 30% 96%;
+    --card: 196 30% 10%;
+    --card-foreground: 170 30% 96%;
+    --popover: 196 30% 10%;
+    --popover-foreground: 170 30% 96%;
+    --primary: 168 70% 58%;
+    --primary-foreground: 196 60% 8%;
+    --secondary: 195 32% 18%;
+    --secondary-foreground: 170 30% 96%;
+    --muted: 195 24% 22%;
+    --muted-foreground: 189 18% 64%;
+    --accent: 194 85% 72%;
+    --accent-foreground: 196 60% 8%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 193 33% 21%;
+    --input: 193 33% 21%;
+    --ring: 168 70% 58%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: #061A20;
+    color: #F4F8F6;
+    font-feature-settings: 'ss01', 'cv01';
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(66, 230, 196, 0.28);
+    color: #F4F8F6;
+  }
+}
+
+@layer components {
+  .mono-label {
+    @apply font-mono text-[11px] uppercase tracking-mono-wide text-muted-slate;
+  }
+  .section-shell {
+    @apply relative w-full;
+  }
+  .container-prose {
+    @apply mx-auto w-full max-w-[1360px] px-6 sm:px-8 lg:px-12;
+  }
+  .hairline {
+    @apply h-px w-full bg-fine-border/70;
+  }
+  .hairline-light {
+    @apply h-px w-full bg-black/10;
+  }
+  .reveal-line {
+    overflow: hidden;
+    display: block;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .bg-hero-vignette {
+    background:
+      radial-gradient(120% 90% at 50% 8%, rgba(18,59,66,0.55) 0%, rgba(6,26,32,0) 60%),
+      radial-gradient(80% 60% at 78% 92%, rgba(66,230,196,0.06) 0%, rgba(6,26,32,0) 55%),
+      #061A20;
+  }
+  .bg-section-deep {
+    background:
+      radial-gradient(60% 50% at 20% 0%, rgba(18,59,66,0.5) 0%, rgba(6,26,32,0) 60%),
+      #061A20;
+  }
+  .bg-surface-teal {
+    background-color: #123B42;
+  }
+  .stroke-filament {
+    stroke: rgba(128, 217, 242, 0.55);
+  }
+  .glow-aqua {
+    box-shadow: 0 0 24px -6px rgba(66, 230, 196, 0.45);
+  }
+  .text-glow-aqua {
+    text-shadow: 0 0 18px rgba(66, 230, 196, 0.35);
+  }
+  .hero-plume {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hero-plume-drift 6s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-plume-drift {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.82;
+  }
+  50% {
+    transform: translateY(-9px);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-scroll {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(14px);
+    opacity: 0.3;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #061A20;
+}
+::-webkit-scrollbar-thumb {
+  background: #24444A;
+  border-radius: 8px;
+  border: 2px solid #061A20;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #123B42;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
